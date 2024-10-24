@@ -23,7 +23,7 @@ const api = {
     async suscribe(email: string) {
       const suscription = await new PreApproval(mercadopago).create({
         body: {
-          back_url: process.env.APP_URL!,
+          back_url: `${process.env.APP_URL}/api/mercadopago`,
           reason: "Suscripción a mensajes de muro",
           auto_recurring: {
             frequency: 1,
