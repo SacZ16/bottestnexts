@@ -2,7 +2,6 @@ import {redirect} from "next/navigation";
 import {revalidatePath} from "next/cache";
 
 import api from "@/api";
-
 export default async function SuscripcionesPage() {
   const messages = await api.message.list();
   const user = await api.user.fetch();
