@@ -7,9 +7,9 @@ import api, {mercadopago} from "@/api";
 
 export async function POST(request: Request) {
   // Obtenemos el cuerpo de la petición que incluye el tipo de notificación
-  const body: {email: string} = await request.json();
+  const body: {email: string,planName:string,planPrice:number} = await request.json();
 
-  const {url,id} = await api.user.suscribe(body.email);
+  const {url,id} = await api.user.suscribe(body.email,body.planPrice,body.planName);
 //   console.log(body,{url})
   await connectDB()
   const user = await User.findOne({email:body.email})
@@ -17,7 +17,9 @@ export async function POST(request: Request) {
  const nuevoPago = await Pago.create({
     padoid:id,
     status:"pending",
-    userId: user._id
+    userId: user._id,
+    planName:body.planName,
+    planPrice:body.planPrice
  })
  user.pagos.unshift(nuevoPago._id);
  await user.save();

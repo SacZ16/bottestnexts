@@ -23,10 +23,11 @@ export async function POST(request: Request) {
   const pagos = await Pago.findOneAndUpdate({padoid:preapproval.id},{status:preapproval.status})
   if (preapproval.status === "authorized") {
     // Actualizamos el usuario con el id de la suscripción
-    console.log("aprobado!!!",preapproval.status)
     // await api.user.update({suscription: preapproval.id});
+    console.log("suscrition status:",preapproval.status)
   }
-  console.log("aprobado!!3",preapproval)
+  console.log("suscrition status:",preapproval.status)
+  // console.log("aprobado!!3",preapproval)
 
   // Respondemos con un estado 200 para indicarle que la notificación fue recibida
   return new Response(null, {status: 200});

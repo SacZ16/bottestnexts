@@ -22,15 +22,15 @@ export const mercadopago = new MercadoPagoConfig({
 
 const api = {
   user: {
-    async suscribe(email: string) {
+    async suscribe(email: string,price:number,planName:string) {
       const suscription = await new PreApproval(mercadopago).create({
         body: {
           back_url: process.env.APP_URL!,
-          reason: "Suscripción a plan",
+          reason: `Suscripción al plan ${planName}`,
           auto_recurring: {
             frequency: 1,
             frequency_type: "months",
-            transaction_amount: 100,
+            transaction_amount: price,
             currency_id: "ARS",
           },
           payer_email: email,

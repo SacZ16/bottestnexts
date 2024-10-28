@@ -8,6 +8,12 @@ const pagoSchema = new mongoose.Schema(
         status:{
             type:String
         },
+        planName:{
+            type:String
+        },
+        planPrice:{
+            type:Number
+        },
         userId: {
             type: mongoose.Schema.Types.ObjectId, // Relacionar con el ObjectId del usuario
             ref: "User", // Referencia al modelo "User"
