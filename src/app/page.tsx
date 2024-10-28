@@ -3,16 +3,16 @@ import {revalidatePath} from "next/cache";
 
 import api from "@/api";
 export default async function SuscripcionesPage() {
-  const messages = await api.message.list();
-  const user = await api.user.fetch();
+  // const messages = await api.message.list();
+  // const user = await api.user.fetch();
 
   async function suscribe(formData: FormData) {
     "use server";
     
     const email = formData.get("email");
     console.log("errororor")
-    const url = await api.user.suscribe(email as string);
-    redirect(url);
+    // const url = await api.user.suscribe(email as string);
+    // redirect(url);
   }
 
   async function add(formData: FormData) {
@@ -20,14 +20,14 @@ export default async function SuscripcionesPage() {
 
     const message = formData.get("message");
 
-    await api.message.add(message as string);
+    // await api.message.add(message as string);
 
     revalidatePath("/suscripciones");
   }
 
   return (
     <div className="grid gap-12">
-      {user.suscription ? (
+      {/* {user.suscription ? (
         <form action={add} className="grid gap-4">
           <textarea className="border border-blue-400 p-2" name="message" rows={4} />
           <button className="rounded-md bg-blue-400 px-4 py-2 text-white" type="submit">
@@ -53,8 +53,8 @@ export default async function SuscripcionesPage() {
           <li key={message.id} className="bg-white/5 p-4">
             <p>{message.text}</p>
           </li>
-        ))}
-      </ul>
+        ))} 
+      </ul>*/}
     </div>
   );
 }
