@@ -30,9 +30,9 @@ const userSchema = new mongoose.Schema(
                 // alquiler:{type :String,required:false,default:"anual"}
             
         },        
-        plan: {
+        plan: [{
             type: String
-        },
+        }],
         pagos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Pago" }],
         vencimiento: {
             type: Date
@@ -43,9 +43,9 @@ const userSchema = new mongoose.Schema(
         ciudad: {
             type: String
         },
-        planjson: {
+        planjson: [{
             type: String
-        },
+        }],
         otp: {
             type: String
         },
